@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DTM Natijalari</title>
+
+  <!-- CSS -->
+  <style>
+    /* ------------------------------------------------------------------
+   GOOGLE FONT (ixtiyoriy): agar <link> orqali qo‘shmagan bo‘lsangiz,
+   CSS ichida import qilish ham mumkin.
+------------------------------------------------------------------ */
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"); */
+
+/* ------------------------------------------------------------------
+   RESET & BASE
+------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.55;
+  background: #fafafa;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ekran cheklangan bo‘lsa rasm va bloklar to‘g‘ri markazda bo‘lsin */
+.container {
+  width: min(90%, 1200px);
+  margin-inline: auto;
+}
+
+/* ------------------------------------------------------------------
+   SAHIFA SARKICHI
+------------------------------------------------------------------ */
+.page-title {
+  text-align: center;
+  padding: 2rem 0 0.75rem;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 600;
+  color: #333;
+}
+
+/* Nozik gradient pastki chiziq */
+.page-title::after {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 3px;
+  margin: 0.5rem auto 0;
+  background: linear-gradient(90deg, #ffaf7b 0%, #ffc37b 50%, #ffd87b 100%);
+  border-radius: 999px;
+}
+
+/* ------------------------------------------------------------------
+   MASONRY GALLERY  (CSS COLUMNS USLUBI)
+------------------------------------------------------------------ */
+.gallery {
+  column-gap: 1rem;        /* ustunlar oralig‘i */
+  column-count: 1;         /* default – mobil */
+  padding-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+/*  ≥600 px → 2 ta ustun  */
+@media (min-width: 600px) {
+  .gallery { column-count: 2; }
+}
+
+/*  ≥900 px → 3 ta ustun  */
+@media (min-width: 900px) {
+  .gallery { column-count: 3; }
+}
+
+/*  ≥1200 px → 4 ta ustun  */
+@media (min-width: 1200px) {
+  .gallery { column-count: 4; }
+}
+
+/* ------------------------------------------------------------------
+   GALLERY ITEMS  (rasmlar kartasi)
+------------------------------------------------------------------ */
+.gallery img {
+  width: 100%;             /* ustun kengligiga moslashadi */
+  height: auto;            /* aspect ratio saqlanadi       */
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  background: #e5e5e5;     /* rasm kechikib yuklansa kulrang fon ko‘rinadi */
+  object-fit: cover;       /* rasm qirqilmaydi, to‘g‘ri joylashadi */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1),
+              box-shadow 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Hover effekti – biroz kattalashib, soyasi kuchayadi */
+.gallery img:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+  cursor: zoom-in;
+}
+
+/* ------------------------------------------------------------------
+   LIGHTBOX yoki MODAL qo‘shsangiz, qoida qo‘shishga tayyor joy
+------------------------------------------------------------------ */
+/* .lightbox { ... } */
+
+/* ------------------------------------------------------------------
+   DARK MODE (ixtiyoriy)
+------------------------------------------------------------------ */
+@media (prefers-color-scheme: dark) {
+  body { background: #121212; color: #eaeaea; }
+  .gallery img { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); }
+  .gallery img:hover { box-shadow: 0 10px 18px rgba(0, 0, 0, 0.55); }
+  .page-title { color: #fafafa; }
+}
+
+  </style>
+</head>
+<body>
+  <center>
+  <a href="./index.html"><img src="./assets/images/mathking.png" style="width: 120px; height: auto; background-size: cover;" alt=""></a>
+
+  </center>
+  <h1 class="page-title">DTM Natijalar</h1>
+
+  <!-- Masonry konteyneri -->
+  <main id="gallery" class="gallery"></main>
+
+  <!-- JS -->
+  <script src="./gallery.js"></script>
+</body>
+</html>
