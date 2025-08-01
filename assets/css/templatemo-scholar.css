@@ -564,8 +564,23 @@ Header Style
   }
 
 }
+#mnh {
+  background: red;
 
-@media (max-width: 767px) {
+}
+@media (max-width: 1400px) {
+  #current-flag {
+    width: 30px;
+    height: auto;
+  }
+  #mnh2 {
+    display: none !important;
+    pointer-events: none !important;
+  }
+  .mnjk {
+    display: block !important;
+  }
+  
   .background-header .main-nav .nav,
   .header-area .main-nav .nav {
     background-color: #f1f0fe;
